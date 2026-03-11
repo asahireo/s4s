@@ -161,11 +161,10 @@ function AppContent() {
 
 function App() {
   const isSubpathDeploy = import.meta.env.BASE_URL !== "/";
-  const routerBasename = isSubpathDeploy ? import.meta.env.BASE_URL : undefined;
 
   if (isSubpathDeploy) {
     return (
-      <HashRouter basename={routerBasename}>
+      <HashRouter>
         <AppContent />
       </HashRouter>
     );
