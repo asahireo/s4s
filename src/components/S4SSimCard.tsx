@@ -5,6 +5,7 @@ import { APP_LINKS } from "../constants/appLinks";
 
 export function S4SSimCard() {
     const [isFlipped, setIsFlipped] = useState(false);
+    const homePreviewImage = `${import.meta.env.BASE_URL}s4shomepage.JPG`;
 
     return (
         <div className="relative flex translate-y-2 justify-center sm:translate-y-8 lg:translate-y-24 xl:translate-y-28">
@@ -22,7 +23,7 @@ export function S4SSimCard() {
                     <div className="relative h-[400px] w-[188px] rounded-[2.2rem] border border-white/60 bg-[linear-gradient(145deg,#edf2f8_0%,#d7e0ec_100%)] p-1.5 shadow-[inset_1px_1px_1px_rgba(255,255,255,0.95),inset_-1px_-1px_1px_rgba(167,183,202,0.35),-14px_-14px_26px_rgba(255,255,255,0.88),14px_14px_30px_rgba(120,138,161,0.44)] sm:h-[470px] sm:w-[220px]">
                         <div className="relative h-full w-full overflow-hidden rounded-[1.6rem] bg-[linear-gradient(160deg,#d6dfeb_0%,#c8d4e3_100%)]">
                             <img
-                                src="/s4shomepage.JPG"
+                                src={homePreviewImage}
                                 alt="S4S app preview"
                                 className="h-full w-full object-cover object-top"
                                 loading="lazy"

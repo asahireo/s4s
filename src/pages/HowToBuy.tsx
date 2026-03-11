@@ -176,6 +176,8 @@ const cardMotion: Variants = {
     }
 };
 
+const withBasePath = (assetPath: string) => `${import.meta.env.BASE_URL}${assetPath.replace(/^\//, "")}`;
+
 export function HowToBuy({ isEnglish }: { isEnglish: boolean }) {
     const [activeTab, setActiveTab] = useState<PlanType>("F22");
 
@@ -283,7 +285,7 @@ export function HowToBuy({ isEnglish }: { isEnglish: boolean }) {
                                     <div className="neu-inset mb-5 rounded-2xl p-2">
                                         <div className="overflow-hidden rounded-xl border border-white/40 bg-[#d4deea] p-2 shadow-inner">
                                             <img
-                                                src={step.image}
+                                                src={withBasePath(step.image)}
                                                 alt={`${t(step.title)} screenshot`}
                                                 className="mx-auto h-auto w-full max-w-[280px] rounded-lg object-contain"
                                                 draggable={false}
