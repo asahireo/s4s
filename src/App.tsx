@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
+import { BrowserRouter, HashRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 import { Globe, Menu, X } from "lucide-react";
 
 import { Home } from "./pages/Home";
@@ -160,12 +160,21 @@ function AppContent() {
 }
 
 function App() {
-  const routerBasename = import.meta.env.BASE_URL === "/" ? undefined : import.meta.env.BASE_URL;
+  const isSubpathDeploy = import.meta.env.BASE_URL !== "/";
+  const routerBasename = isSubpathDeploy ? import.meta.env.BASE_URL : undefined;
+
+  if (isSubpathDeploy) {
+    return (
+      <HashRouter basename={routerBasename}>
+        <AppContent />
+      </HashRouter>
+    );
+  }
 
   return (
-    <Router basename={routerBasename}>
+    <BrowserRouter>
       <AppContent />
-    </Router>
+    </BrowserRouter>
   );
 }
 
