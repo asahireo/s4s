@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, ShieldCheck, CreditCard, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export function PromoSection({ isEnglish }: { isEnglish: boolean }) {
     const features = isEnglish
@@ -15,7 +16,7 @@ export function PromoSection({ isEnglish }: { isEnglish: boolean }) {
         ];
 
     return (
-        <section className="py-24 relative overflow-hidden bg-slate-900 border-t border-white/5">
+        <section className="relative overflow-hidden border-t border-white/60 bg-transparent py-24">
             <div className="container mx-auto px-6 relative z-10">
                 <div className="grid lg:grid-cols-2 gap-8 items-center">
 
@@ -27,42 +28,42 @@ export function PromoSection({ isEnglish }: { isEnglish: boolean }) {
                         transition={{ duration: 0.6 }}
                         className="flex flex-col gap-6"
                     >
-                        <div className="glass-card p-10 md:p-14 relative overflow-hidden group">
+                        <div className="glass-card relative group overflow-hidden p-10 md:p-14">
                             {/* Red decorative sweep */}
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-s4s-red/20 rounded-full blur-[80px] group-hover:bg-s4s-red/30 transition-colors duration-500" />
-                            <div className="absolute -left-[10%] -bottom-[10%] w-32 h-32 bg-s4s-gold-light/20 blur-[60px]" />
+                            <div className="absolute right-0 top-0 h-64 w-64 rounded-full bg-[#d9e8f7] blur-[80px] transition-colors duration-500 group-hover:bg-[#cde2f6]" />
+                            <div className="absolute -bottom-[10%] -left-[10%] h-32 w-32 bg-[#e6eef8] blur-[60px]" />
 
-                            <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 relative z-10 leading-tight">
+                            <h2 className="relative z-10 mb-6 text-4xl font-extrabold leading-tight text-[#60748d] md:text-5xl">
                                 {isEnglish ? (
                                     <>
                                         RM30 FOR <br />
-                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-s4s-red to-orange-500">6 MONTHS</span><br />
+                                        <span className="bg-gradient-to-r from-[#5da9dd] to-[#4f87c5] bg-clip-text text-transparent">6 MONTHS</span><br />
                                         VALIDITY PERIOD
                                     </>
                                 ) : (
                                     <>
                                         RM30 UNTUK<br />
-                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-s4s-red to-orange-500">TEMPOH SAH</span><br />
+                                        <span className="bg-gradient-to-r from-[#5da9dd] to-[#4f87c5] bg-clip-text text-transparent">TEMPOH SAH</span><br />
                                         SELAMA 6 BULAN
                                     </>
                                 )}
                             </h2>
 
-                            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-s4s-gold/10 border border-s4s-gold/30 backdrop-blur-sm shadow-[0_4px_15px_rgba(253,185,49,0.15)] relative z-10">
-                                <Sparkles className="w-5 h-5 text-s4s-gold" />
-                                <span className="font-bold text-s4s-gold tracking-wide">
-                                    {isEnglish ? "LINKED TO SWIMS PROGRAM" : "KOMUNITI PROGRAM SWIMS"}
+                            <div className="neu-pill relative z-10 inline-flex items-center gap-2 px-5 py-2.5">
+                                <Sparkles className="h-5 w-5 text-s4s-blue" />
+                                <span className="font-bold tracking-wide text-[#6f86a6]">
+                                    {isEnglish ? "LINKED TO S4S REWARDS" : "DIHUBUNGKAN DENGAN GANJARAN S4S"}
                                 </span>
                             </div>
                         </div>
 
                         <div className="grid grid-cols-3 gap-4">
                             {features.map((item, idx) => (
-                                <div key={idx} className="glass-card p-4 flex flex-col items-center justify-center text-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-s4s-blue/10 flex items-center justify-center border border-s4s-blue/20">
-                                        <item.icon className="w-5 h-5 text-s4s-blue" />
+                                <div key={idx} className="glass-card flex flex-col items-center justify-center gap-3 p-4 text-center">
+                                    <div className="neu-card-soft flex h-10 w-10 items-center justify-center rounded-full">
+                                        <item.icon className="h-5 w-5 text-[#5e7ea7]" />
                                     </div>
-                                    <span className="text-xs font-semibold text-slate-300">{item.title}</span>
+                                    <span className="text-xs font-semibold text-[#7287a0]">{item.title}</span>
                                 </div>
                             ))}
                         </div>
@@ -75,30 +76,30 @@ export function PromoSection({ isEnglish }: { isEnglish: boolean }) {
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >
-                        <div className="glass-card p-10 md:p-14 border-s4s-blue/20 backdrop-blur-xl relative overflow-hidden">
-                            <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-s4s-blue to-transparent opacity-50" />
+                        <div className="glass-card relative overflow-hidden p-10 md:p-14">
+                            <div className="absolute right-0 top-0 h-1 w-full bg-gradient-to-r from-transparent via-s4s-blue to-transparent opacity-45" />
 
-                            <h3 className="text-2xl md:text-3xl font-bold text-white mb-8 flex items-center gap-3">
-                                <div className="w-2 h-8 bg-s4s-blue rounded-full" />
+                            <h3 className="mb-8 flex items-center gap-3 text-2xl font-bold text-[#60748d] md:text-3xl">
+                                <div className="h-8 w-2 rounded-full bg-s4s-blue" />
                                 {isEnglish ? "How To Reload?" : "Bagaimana Untuk Tambah Nilai ?"}
                             </h3>
 
                             <ul className="space-y-6">
                                 <li className="flex gap-4 items-start group">
-                                    <div className="w-8 h-8 rounded-full bg-s4s-blue/20 text-s4s-blue flex items-center justify-center font-bold shrink-0 mt-1 shadow-[0_0_15px_rgba(93,169,221,0.3)] group-hover:scale-110 transition-transform cursor-default">
+                                    <div className="neu-card-soft mt-1 flex h-8 w-8 shrink-0 cursor-default items-center justify-center rounded-full font-bold text-[#5a7ba4] transition-transform group-hover:scale-110">
                                         1
                                     </div>
-                                    <p className="text-slate-300 text-lg leading-relaxed pt-1 w-full border-b border-white/5 pb-6">
+                                    <p className="w-full border-b border-white/50 pb-6 pt-1 text-lg leading-relaxed text-[#6f859f]">
                                         {isEnglish
                                             ? "Top-up airtime credit via S4S channels to purchase plan."
                                             : "Tambah nilai kredit masa siaran melalui saluran S4S untuk pelan pembelian."}
                                     </p>
                                 </li>
                                 <li className="flex gap-4 items-start group">
-                                    <div className="w-8 h-8 rounded-full bg-white/5 text-slate-400 flex items-center justify-center font-bold shrink-0 mt-1 group-hover:bg-s4s-blue/20 group-hover:text-s4s-blue transition-colors cursor-default">
+                                    <div className="neu-card-soft mt-1 flex h-8 w-8 shrink-0 cursor-default items-center justify-center rounded-full font-bold text-[#7f91a7] transition-colors group-hover:text-[#5a7ba4]">
                                         2
                                     </div>
-                                    <p className="text-slate-500 text-lg leading-relaxed pt-1 w-full pb-2">
+                                    <p className="w-full pb-2 pt-1 text-lg leading-relaxed text-[#8a9db2]">
                                         {isEnglish
                                             ? "Select your preferred validity plan from the menu."
                                             : "Pilih pelan sah pilihan anda dari menu."}
@@ -106,10 +107,10 @@ export function PromoSection({ isEnglish }: { isEnglish: boolean }) {
                                 </li>
                             </ul>
 
-                            <button className="w-full mt-10 py-4 bg-white/5 hover:bg-white/10 text-white rounded-xl font-semibold border border-white/10 transition-colors flex justify-center items-center gap-2 group">
-                                {isEnglish ? "View Supported Channels" : "Lihat Saluran Disokong"}
-                                <CheckCircle2 className="w-5 h-5 text-s4s-blue" />
-                            </button>
+                            <Link to="/videos" className="neu-btn mt-10 flex w-full items-center justify-center gap-2 py-4 font-semibold text-[#637991] transition-colors hover:text-[#4f87c5]">
+                                {isEnglish ? "Watch S4S Videos" : "Tonton Video S4S"}
+                                <CheckCircle2 className="h-5 w-5 text-s4s-blue" />
+                            </Link>
                         </div>
                     </motion.div>
 

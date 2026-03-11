@@ -47,15 +47,15 @@ export function PlanGrid({ isEnglish }: { isEnglish: boolean }) {
     ];
 
     return (
-        <section className="py-24 relative bg-slate-900 border-t border-white/5">
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0f172a]" />
+        <section className="relative border-t border-white/60 bg-transparent py-24">
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent to-[#e4eaf2]/45" />
             <div className="container mx-auto px-6 relative z-10">
 
                 <div className="text-center mb-16 max-w-2xl mx-auto">
-                    <h2 className="text-4xl font-extrabold text-white mb-6">
+                    <h2 className="mb-6 text-4xl font-extrabold text-[#60748d]">
                         {isEnglish ? "Choose Your Perfect Plan" : "Pilih Pelan Sempurna Anda"}
                     </h2>
-                    <p className="text-slate-400 text-lg">
+                    <p className="text-lg text-[#778ca4]">
                         {isEnglish
                             ? "All plans come with nationwide coverage and seamless Mastercard integration."
                             : "Semua pelan didatangkan dengan liputan di seluruh negara dan integrasi Mastercard yang lancar."}

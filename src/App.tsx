@@ -4,17 +4,22 @@ import { Globe, Menu, X } from "lucide-react";
 
 import { Home } from "./pages/Home";
 import { HowToBuy } from "./pages/HowToBuy";
+import { Videos } from "./pages/Videos";
+import { Rewards } from "./pages/Rewards";
+import { APP_LINKS } from "./constants/appLinks";
+import { NetworkBackdrop } from "./components/NetworkBackdrop";
 
 function AppContent() {
   const [isEnglish, setIsEnglish] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
-
-  // Close mobile menu on route change
-  useEffect(() => {
-    setMobileMenuOpen(false);
-  }, [location.pathname]);
+  const navLinkClass = (path: string) =>
+    `text-sm font-semibold transition-colors ${location.pathname === path ? "text-[#4f87c5]" : "text-[#6e7f95] hover:text-[#5d6f86]"
+    }`;
+  const mobileNavLinkClass = (path: string) =>
+    `text-base font-semibold ${location.pathname === path ? "text-[#4f87c5]" : "text-[#60748d]"}`;
+  const closeMobileMenu = () => setMobileMenuOpen(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,59 +30,62 @@ function AppContent() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white font-sans selection:bg-s4s-blue/30 selection:text-white">
+    <div className="relative min-h-screen overflow-x-clip bg-transparent font-sans text-[#6e7f95] selection:bg-s4s-blue/30 selection:text-white">
+      <NetworkBackdrop />
+
       {/* Navigation */}
       <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-slate-900/80 backdrop-blur-xl border-b border-white/10 py-4 shadow-lg" : "bg-transparent py-6"
+        className={`fixed top-0 z-50 w-full transition-all duration-300 ${isScrolled
+          ? "border-b border-white/60 bg-[#e9edf3]/90 py-4 shadow-[0_8px_20px_rgba(129,144,165,0.22)] backdrop-blur-xl"
+          : "bg-transparent py-6"
           }`}
       >
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2 group">
-              <div className="w-10 h-10 rounded-lg bg-s4s-blue flex items-center justify-center font-black text-xl italic tracking-tighter shadow-[0_0_15px_rgba(93,169,221,0.5)] group-hover:bg-blue-400 transition-colors">
+            <Link to="/" className="flex items-center group">
+              <div className="neu-btn-primary flex h-11 min-w-14 items-center justify-center rounded-xl px-2 text-xl font-black italic tracking-tight text-white transition-transform group-hover:-translate-y-0.5">
                 S4S
               </div>
-              <span className="font-bold text-xl tracking-tight hidden sm:block">Mobile</span>
             </Link>
 
             {/* Desktop links */}
             <div className="hidden md:flex items-center gap-8">
-              <Link to="/" className={`text-sm font-semibold transition-colors ${location.pathname === '/' ? 'text-white' : 'text-slate-300 hover:text-white'}`}>
+              <Link to="/" className={navLinkClass("/")}>
                 {isEnglish ? "Home" : "Utama"}
               </Link>
-              <Link to="/how-to-buy" className={`text-sm font-semibold transition-colors ${location.pathname === '/how-to-buy' ? 'text-s4s-gold-light' : 'text-slate-300 hover:text-white'}`}>
+              <Link to="/how-to-buy" className={navLinkClass("/how-to-buy")}>
                 {isEnglish ? "How to Buy" : "Cara Membeli"}
               </Link>
-              <a href="#" className="text-sm font-semibold text-slate-300 hover:text-white transition-colors">
+              <Link to="/videos" className={navLinkClass("/videos")}>
+                {isEnglish ? "Videos" : "Video"}
+              </Link>
+              <Link to="/rewards" className={navLinkClass("/rewards")}>
                 {isEnglish ? "Rewards" : "Ganjaran"}
-              </a>
+              </Link>
 
               {/* Language Toggle */}
               <button
                 onClick={() => setIsEnglish(!isEnglish)}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-colors"
+                className="neu-pill flex items-center gap-2 px-3 py-1.5 text-[#6e7f95] transition-colors hover:text-[#4f87c5]"
                 aria-label="Toggle Language"
               >
-                <Globe className="w-4 h-4 text-s4s-blue" />
+                <Globe className="h-4 w-4 text-s4s-blue" />
                 <span className="text-xs font-bold">{isEnglish ? "EN" : "BM"}</span>
               </button>
 
-              <button className="px-5 py-2.5 bg-s4s-blue text-white rounded-lg font-bold hover:bg-blue-400 transition-colors text-sm shadow-[0_0_15px_rgba(93,169,221,0.4)]">
-                {isEnglish ? "Login" : "Log Masuk"}
-              </button>
             </div>
 
             {/* Mobile menu button */}
-            <div className="md:hidden flex items-center gap-4">
+            <div className="md:hidden flex items-center gap-2">
               <button
                 onClick={() => setIsEnglish(!isEnglish)}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10"
+                className="neu-pill flex shrink-0 items-center gap-2 px-3 py-1.5 text-[#6e7f95]"
               >
-                <Globe className="w-4 h-4 text-s4s-blue" />
+                <Globe className="h-4 w-4 text-s4s-blue" />
                 <span className="text-xs font-bold">{isEnglish ? "EN" : "BM"}</span>
               </button>
-              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-2 text-slate-300">
+              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="neu-btn shrink-0 rounded-xl p-2 text-[#6e7f95]">
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>
@@ -86,30 +94,66 @@ function AppContent() {
 
         {/* Mobile Dropdown */}
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 w-full bg-slate-800 border-b border-white/10 p-6 flex flex-col gap-4 shadow-xl">
-            <Link to="/" className="text-base font-semibold text-slate-200">{isEnglish ? "Home" : "Utama"}</Link>
-            <Link to="/how-to-buy" className="text-base font-semibold text-s4s-gold-light">{isEnglish ? "How to Buy" : "Cara Membeli"}</Link>
-            <a href="#" className="text-base font-semibold text-slate-200">{isEnglish ? "Rewards" : "Ganjaran"}</a>
-            <button className="w-full mt-4 px-5 py-3 bg-s4s-blue text-white rounded-lg font-bold text-center">
-              {isEnglish ? "Login" : "Log Masuk"}
-            </button>
+          <div className="absolute left-0 top-full flex w-full flex-col gap-4 border-b border-white/60 bg-[#e9edf3] p-6 shadow-[0_14px_26px_rgba(129,144,165,0.22)] md:hidden">
+            <Link to="/" className={mobileNavLinkClass("/")} onClick={closeMobileMenu}>{isEnglish ? "Home" : "Utama"}</Link>
+            <Link to="/how-to-buy" className={mobileNavLinkClass("/how-to-buy")} onClick={closeMobileMenu}>{isEnglish ? "How to Buy" : "Cara Membeli"}</Link>
+            <Link to="/videos" className={mobileNavLinkClass("/videos")} onClick={closeMobileMenu}>{isEnglish ? "Videos" : "Video"}</Link>
+            <Link to="/rewards" className={mobileNavLinkClass("/rewards")} onClick={closeMobileMenu}>
+              {isEnglish ? "Rewards" : "Ganjaran"}
+            </Link>
           </div>
         )}
       </nav>
 
-      <main>
+      <main className="relative z-10">
         <Routes>
           <Route path="/" element={<Home isEnglish={isEnglish} />} />
           <Route path="/how-to-buy" element={<HowToBuy isEnglish={isEnglish} />} />
+          <Route path="/videos" element={<Videos isEnglish={isEnglish} />} />
+          <Route path="/rewards" element={<Rewards isEnglish={isEnglish} />} />
         </Routes>
       </main>
 
       {/* Simple Footer */}
-      <footer className="footer bg-[#0f172a] border-t border-white/10 py-12 text-center text-slate-500 text-sm">
-        <p>&copy; {new Date().getFullYear()} S4S Mobile. {isEnglish ? "All rights reserved." : "Hak cipta terpelihara."}</p>
-        <p className="mt-2 flex justify-center items-center gap-1">
-          {isEnglish ? "Linked to" : "Dihubungkan dengan"} <span className="font-bold text-slate-400">MiPay Mastercard</span>.
+      <footer className="footer relative z-10 border-t border-white/60 bg-[#e9edf3]/86 py-12 text-center text-sm text-[#7b8ea5] backdrop-blur-sm">
+        <p>&copy; {new Date().getFullYear()} S4S. {isEnglish ? "All rights reserved." : "Hak cipta terpelihara."}</p>
+        <p className="mt-2 flex items-center justify-center gap-1">
+          {isEnglish ? "Linked to" : "Dihubungkan dengan"}{" "}
+          <a
+            href={APP_LINKS.mipay}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-bold text-[#5f738b] transition-colors hover:text-[#4f87c5]"
+          >
+            MiPay Mastercard
+          </a>.
         </p>
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-4">
+          <a
+            href={APP_LINKS.s4s}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-[#60748d] transition-colors hover:text-[#4f87c5]"
+          >
+            S4S App
+          </a>
+          <a
+            href={APP_LINKS.mipay}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-[#60748d] transition-colors hover:text-[#4f87c5]"
+          >
+            MiPay App
+          </a>
+          <a
+            href={APP_LINKS.xpat}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-[#60748d] transition-colors hover:text-[#4f87c5]"
+          >
+            XPAT App
+          </a>
+        </div>
       </footer>
     </div>
   );
