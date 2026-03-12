@@ -11,7 +11,7 @@ export function PlanGrid({ isEnglish }: { isEnglish: boolean }) {
             validity: "30 Days",
             features: isEnglish
                 ? ["High-Speed 4G/5G Data", "Rollover Data Applicable", "Standard Support"]
-                : ["Data Kelajuan Tinggi 4G/5G", "Data Rollover Terdedia", "Sokongan Standard"]
+                : ["Data Kelajuan Tinggi 4G/5G", "Data Rollover Tersedia", "Sokongan Standard"]
         },
         {
             id: "2",
@@ -22,7 +22,7 @@ export function PlanGrid({ isEnglish }: { isEnglish: boolean }) {
             isPopular: true,
             features: isEnglish
                 ? ["High-Speed 4G/5G Data", "Rollover Data Applicable", "Unlimited Basic Internet", "Priority Support"]
-                : ["Data Kelajuan Tinggi 4G/5G", "Data Rollover Terdedia", "Internet Asas Tanpa Had", "Sokongan Keutamaan"]
+                : ["Data Kelajuan Tinggi 4G/5G", "Data Rollover Tersedia", "Internet Asas Tanpa Had", "Sokongan Keutamaan"]
         },
         {
             id: "3",
@@ -42,7 +42,7 @@ export function PlanGrid({ isEnglish }: { isEnglish: boolean }) {
             validity: "90 Days",
             features: isEnglish
                 ? ["Maximum Data Allowance", "Premium Gold Validity", "Unlimited Calls & SMS", "Dedicated Manager"]
-                : ["Kuota Data Maksimum", "Tempoh Sah Emas Premium", "Panggilan & SMS Tanpa Had", "Pengurus Dedikasi"]
+                : ["Kuota Data Maksimum", "Tempoh Sah Emas Premium", "Panggilan & SMS Tanpa Had", "Pengurus Sokongan Khusus"]
         }
     ];
 
@@ -53,12 +53,12 @@ export function PlanGrid({ isEnglish }: { isEnglish: boolean }) {
 
                 <div className="text-center mb-16 max-w-2xl mx-auto">
                     <h2 className="mb-6 text-4xl font-extrabold text-[#60748d]">
-                        {isEnglish ? "Choose Your Perfect Plan" : "Pilih Pelan Sempurna Anda"}
+                        {isEnglish ? "Choose Your Perfect Plan" : "Pilih Pelan Ideal Anda"}
                     </h2>
                     <p className="text-lg text-[#778ca4]">
                         {isEnglish
                             ? "All plans come with nationwide coverage and seamless Mastercard integration."
-                            : "Semua pelan didatangkan dengan liputan di seluruh negara dan integrasi Mastercard yang lancar."}
+                            : "Liputan seluruh negara dan integrasi Mastercard yang lancar untuk semua pelan."}
                     </p>
                 </div>
 

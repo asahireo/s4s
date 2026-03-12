@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, HashRouter, Routes, Route, Link, useLocation } from "react-router-dom";
+import { BrowserRouter, HashRouter, Routes, Route, Link, Navigate, useLocation } from "react-router-dom";
 import { Globe, Menu, X } from "lucide-react";
 
 import { Home } from "./pages/Home";
 import { HowToBuy } from "./pages/HowToBuy";
 import { Videos } from "./pages/Videos";
-import { Rewards } from "./pages/Rewards";
+import { Flow } from "./pages/Flow";
 import { APP_LINKS } from "./constants/appLinks";
 import { NetworkBackdrop } from "./components/NetworkBackdrop";
 
@@ -60,8 +60,8 @@ function AppContent() {
               <Link to="/videos" className={navLinkClass("/videos")}>
                 {isEnglish ? "Videos" : "Video"}
               </Link>
-              <Link to="/rewards" className={navLinkClass("/rewards")}>
-                {isEnglish ? "Rewards" : "Ganjaran"}
+              <Link to="/flow" className={navLinkClass("/flow")}>
+                {isEnglish ? "Flow" : "Aliran"}
               </Link>
 
               {/* Language Toggle */}
@@ -98,8 +98,8 @@ function AppContent() {
             <Link to="/" className={mobileNavLinkClass("/")} onClick={closeMobileMenu}>{isEnglish ? "Home" : "Utama"}</Link>
             <Link to="/how-to-buy" className={mobileNavLinkClass("/how-to-buy")} onClick={closeMobileMenu}>{isEnglish ? "How to Buy" : "Cara Membeli"}</Link>
             <Link to="/videos" className={mobileNavLinkClass("/videos")} onClick={closeMobileMenu}>{isEnglish ? "Videos" : "Video"}</Link>
-            <Link to="/rewards" className={mobileNavLinkClass("/rewards")} onClick={closeMobileMenu}>
-              {isEnglish ? "Rewards" : "Ganjaran"}
+            <Link to="/flow" className={mobileNavLinkClass("/flow")} onClick={closeMobileMenu}>
+              {isEnglish ? "Flow" : "Aliran"}
             </Link>
           </div>
         )}
@@ -110,7 +110,8 @@ function AppContent() {
           <Route path="/" element={<Home isEnglish={isEnglish} />} />
           <Route path="/how-to-buy" element={<HowToBuy isEnglish={isEnglish} />} />
           <Route path="/videos" element={<Videos isEnglish={isEnglish} />} />
-          <Route path="/rewards" element={<Rewards isEnglish={isEnglish} />} />
+          <Route path="/flow" element={<Flow isEnglish={isEnglish} />} />
+          <Route path="/rewards" element={<Navigate to="/flow" replace />} />
         </Routes>
       </main>
 

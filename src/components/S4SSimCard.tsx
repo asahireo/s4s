@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Wifi } from "lucide-react";
 import { APP_LINKS } from "../constants/appLinks";
 
-export function S4SSimCard() {
+export function S4SSimCard({ isEnglish }: { isEnglish: boolean }) {
     const [isFlipped, setIsFlipped] = useState(false);
     const homePreviewImage = `${import.meta.env.BASE_URL}s4shomepage.JPG`;
 
@@ -99,7 +99,9 @@ export function S4SSimCard() {
                 >
                     <div className="flex items-center gap-2">
                         <Wifi className="w-5 h-5 text-s4s-blue" />
-                        <span className="text-sm font-bold text-[#5f738b]">4G/5G Ready</span>
+                        <span className="text-sm font-bold text-[#5f738b]">
+                            {isEnglish ? "4G/5G Ready" : "Menyokong rangkaian 4G/5G"}
+                        </span>
                     </div>
                 </motion.div>
             </div>

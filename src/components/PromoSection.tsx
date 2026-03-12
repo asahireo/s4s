@@ -7,12 +7,12 @@ export function PromoSection({ isEnglish }: { isEnglish: boolean }) {
         ? [
             { icon: ShieldCheck, title: "Secure Mipay Link" },
             { icon: CreditCard, title: "Mastercard Supported" },
-            { icon: Sparkles, title: "Exclusive Rewards" },
+            { icon: Sparkles, title: "XPAT Cashback Only" },
         ]
         : [
             { icon: ShieldCheck, title: "Pautan Mipay Selamat" },
             { icon: CreditCard, title: "Sokongan Mastercard" },
-            { icon: Sparkles, title: "Ganjaran Eksklusif" },
+            { icon: Sparkles, title: "Cashback XPAT Sahaja" },
         ];
 
     return (
@@ -52,7 +52,7 @@ export function PromoSection({ isEnglish }: { isEnglish: boolean }) {
                             <div className="neu-pill relative z-10 inline-flex items-center gap-2 px-5 py-2.5">
                                 <Sparkles className="h-5 w-5 text-s4s-blue" />
                                 <span className="font-bold tracking-wide text-[#6f86a6]">
-                                    {isEnglish ? "LINKED TO S4S REWARDS" : "DIHUBUNGKAN DENGAN GANJARAN S4S"}
+                                    {isEnglish ? "XPAT CASHBACK ONLY" : "CASHBACK XPAT SAHAJA"}
                                 </span>
                             </div>
                         </div>
@@ -81,7 +81,7 @@ export function PromoSection({ isEnglish }: { isEnglish: boolean }) {
 
                             <h3 className="mb-8 flex items-center gap-3 text-2xl font-bold text-[#60748d] md:text-3xl">
                                 <div className="h-8 w-2 rounded-full bg-s4s-blue" />
-                                {isEnglish ? "How To Reload?" : "Bagaimana Untuk Tambah Nilai ?"}
+                                {isEnglish ? "How To Reload?" : "Cara Tambah Nilai"}
                             </h3>
 
                             <ul className="space-y-6">
@@ -92,7 +92,7 @@ export function PromoSection({ isEnglish }: { isEnglish: boolean }) {
                                     <p className="w-full border-b border-white/50 pb-6 pt-1 text-lg leading-relaxed text-[#6f859f]">
                                         {isEnglish
                                             ? "Top-up airtime credit via S4S channels to purchase plan."
-                                            : "Tambah nilai kredit masa siaran melalui saluran S4S untuk pelan pembelian."}
+                                            : "Tambah nilai kredit melalui saluran S4S untuk membeli pelan"}
                                     </p>
                                 </li>
                                 <li className="flex gap-4 items-start group">
@@ -102,7 +102,7 @@ export function PromoSection({ isEnglish }: { isEnglish: boolean }) {
                                     <p className="w-full pb-2 pt-1 text-lg leading-relaxed text-[#8a9db2]">
                                         {isEnglish
                                             ? "Select your preferred validity plan from the menu."
-                                            : "Pilih pelan sah pilihan anda dari menu."}
+                                            : "Pilih pelan pilihan anda daripada menu"}
                                     </p>
                                 </li>
                             </ul>

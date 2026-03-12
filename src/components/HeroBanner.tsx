@@ -33,11 +33,11 @@ export function HeroBanner({ isEnglish }: { isEnglish: boolean }) {
                         <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-[#5f738b] leading-[1.1] tracking-tight">
                             {isEnglish ? (
                                 <>
-                                    THE <span className="text-gradient-gold">ONLY</span> MOBILE SIM WITH 6 MONTH VALIDITY
+                                    MOBILE SIM WITH 6 MONTH VALIDITY
                                 </>
                             ) : (
                                 <>
-                                    SATU-SATUNYA SIM MOBILE DENGAN TEMPOH SAH <span className="text-gradient-gold">6 BULAN</span>
+                                    KAD SIM MUDAH ALIH DENGAN TEMPOH SAH SEHINGGA <span className="text-gradient-gold">6 BULAN</span>
                                 </>
                             )}
                         </h1>
@@ -45,7 +45,7 @@ export function HeroBanner({ isEnglish }: { isEnglish: boolean }) {
                         <p className="max-w-xl text-lg leading-relaxed text-[#7488a0] md:text-xl">
                             {isEnglish
                                 ? "Experience uninterrupted connectivity. Linked directly to the Prepaid MiPay Mastercard."
-                                : "Alami sambungan tanpa gangguan. Dihubungkan terus ke Mastercard Prabayar MiPay."
+                                : "Nikmati sambungan tanpa gangguan. Dihubungkan terus dengan Kad Prabayar MiPAY Mastercard."
                             }
                         </p>
 
@@ -70,7 +70,7 @@ export function HeroBanner({ isEnglish }: { isEnglish: boolean }) {
                     >
                         {/* Glowing Aura Behind Card */}
                         <div className="pointer-events-none absolute left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#d2e5f7] blur-[75px]" />
-                        <S4SSimCard />
+                        <S4SSimCard isEnglish={isEnglish} />
                     </motion.div>
 
                 </div>
