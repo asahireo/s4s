@@ -12,8 +12,36 @@ type RewardsFlowVisualProps = {
     steps: RewardsFlowStep[];
 };
 
-const desktopPath = "M 68 160 C 172 78, 286 78, 392 160 C 486 232, 602 232, 716 148 C 790 96, 846 95, 888 134";
-const mobilePath = "M 160 40 C 134 124, 210 172, 162 246 C 130 298, 194 352, 162 420 C 135 478, 178 532, 162 592";
+const THREE_STEP_DESKTOP_PATH = "M 86 164 C 200 84, 294 84, 365 88 C 494 96, 582 236, 682 192";
+const FOUR_STEP_DESKTOP_PATH = "M 68 160 C 172 78, 286 78, 392 160 C 486 232, 602 232, 716 148 C 790 96, 846 95, 888 134";
+const THREE_STEP_MOBILE_PATH = "M 198 78 C 154 140, 154 194, 115 237 C 90 276, 152 352, 198 403";
+const FOUR_STEP_MOBILE_PATH = "M 160 40 C 134 124, 210 172, 162 246 C 130 298, 194 352, 162 420 C 135 478, 178 532, 162 592";
+
+const THREE_STEP_DESKTOP_POSITIONS = [
+    { left: 9, top: 63 },
+    { left: 38, top: 34 },
+    { left: 71, top: 74 }
+];
+
+const FOUR_STEP_DESKTOP_POSITIONS = [
+    { left: 9, top: 63 },
+    { left: 35, top: 34 },
+    { left: 63, top: 75 },
+    { left: 90, top: 53 }
+];
+
+const THREE_STEP_MOBILE_POSITIONS = [
+    { left: 62, top: 12 },
+    { left: 36, top: 37 },
+    { left: 62, top: 63 }
+];
+
+const FOUR_STEP_MOBILE_POSITIONS = [
+    { left: 62, top: 11 },
+    { left: 36, top: 35 },
+    { left: 62, top: 59 },
+    { left: 37, top: 83 }
+];
 
 function iconForStep(id: string) {
     switch (id) {
@@ -32,6 +60,12 @@ function iconForStep(id: string) {
 
 export function RewardsFlowVisual({ title, steps }: RewardsFlowVisualProps) {
     const prefersReducedMotion = useReducedMotion();
+    const isThreeStepFlow = steps.length === 3;
+    const desktopPath = isThreeStepFlow ? THREE_STEP_DESKTOP_PATH : FOUR_STEP_DESKTOP_PATH;
+    const mobilePath = isThreeStepFlow ? THREE_STEP_MOBILE_PATH : FOUR_STEP_MOBILE_PATH;
+    const desktopPositions = isThreeStepFlow ? THREE_STEP_DESKTOP_POSITIONS : FOUR_STEP_DESKTOP_POSITIONS;
+    const mobilePositions = isThreeStepFlow ? THREE_STEP_MOBILE_POSITIONS : FOUR_STEP_MOBILE_POSITIONS;
+    const mobileHeightClass = isThreeStepFlow ? "h-[560px]" : "h-[640px]";
 
     return (
         <section className="space-y-5">
@@ -64,14 +98,13 @@ export function RewardsFlowVisual({ title, steps }: RewardsFlowVisualProps) {
 
                     {steps.map((step, index) => {
                         const Icon = iconForStep(step.id);
-                        const left = [9, 35, 63, 90][index] ?? 90;
-                        const top = [63, 34, 75, 53][index] ?? 53;
+                        const current = desktopPositions[index] ?? desktopPositions[desktopPositions.length - 1];
 
                         return (
                             <motion.article
                                 key={step.id}
                                 className="rewards-flow-node absolute w-48 -translate-x-1/2 -translate-y-1/2 rounded-2xl p-3"
-                                style={{ left: `${left}%`, top: `${top}%` }}
+                                style={{ left: `${current.left}%`, top: `${current.top}%` }}
                                 initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
                                 whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-80px" }}
@@ -87,7 +120,7 @@ export function RewardsFlowVisual({ title, steps }: RewardsFlowVisualProps) {
                     })}
                 </div>
 
-                <div className="relative h-[640px] md:hidden">
+                <div className={`relative ${mobileHeightClass} md:hidden`}>
                     <svg viewBox="0 0 320 640" className="absolute inset-0 h-full w-full" aria-hidden="true">
                         <defs>
                             <linearGradient id="flowMobileGradient" x1="50%" y1="0%" x2="50%" y2="100%">
@@ -113,13 +146,7 @@ export function RewardsFlowVisual({ title, steps }: RewardsFlowVisualProps) {
 
                     {steps.map((step, index) => {
                         const Icon = iconForStep(step.id);
-                        const positions = [
-                            { left: 62, top: 11 },
-                            { left: 36, top: 35 },
-                            { left: 62, top: 59 },
-                            { left: 37, top: 83 }
-                        ];
-                        const current = positions[index] ?? positions[positions.length - 1];
+                        const current = mobilePositions[index] ?? mobilePositions[mobilePositions.length - 1];
 
                         return (
                             <motion.article
