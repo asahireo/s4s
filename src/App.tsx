@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, HashRouter, Routes, Route, Link, Navigate, useLocation } from "react-router-dom";
-import { Globe, Menu, X } from "lucide-react";
+import { Globe, Menu, MessageCircle, PhoneCall, X } from "lucide-react";
 
 import { Home } from "./pages/Home";
 import { HowToBuy } from "./pages/HowToBuy";
@@ -117,6 +117,51 @@ function AppContent() {
 
       {/* Simple Footer */}
       <footer className="footer relative z-10 border-t border-white/60 bg-[#e9edf3]/86 py-12 text-center text-sm text-[#7b8ea5] backdrop-blur-sm">
+        <div className="mx-auto mb-8 w-full max-w-3xl rounded-3xl border border-white/80 bg-[linear-gradient(145deg,rgba(242,246,251,0.95),rgba(226,235,245,0.92))] p-6 text-left shadow-[-10px_-10px_22px_rgba(255,255,255,0.85),10px_10px_24px_rgba(129,144,165,0.28)] md:p-7">
+          <p className="text-xs font-extrabold uppercase tracking-[0.12em] text-[#6d84a0]">
+            {isEnglish ? "Customer Support" : "Khidmat Pelanggan"}
+          </p>
+          <p className="mt-2 text-sm text-[#6e7f95]">
+            {isEnglish ? "Need help? Reach us directly." : "Perlukan bantuan? Hubungi kami terus."}
+          </p>
+
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            <a
+              href="tel:+60389920700"
+              className="group flex items-center gap-3 rounded-2xl border border-white/80 bg-[#edf2f8] px-4 py-3 text-[#60748d] shadow-[-6px_-6px_14px_rgba(255,255,255,0.84),6px_6px_14px_rgba(129,144,165,0.2)] transition-all hover:-translate-y-0.5 hover:text-[#4f87c5]"
+              aria-label="Call customer support at +603-89920700"
+            >
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[linear-gradient(135deg,#5da9dd,#4f87c5)] text-white shadow-[0_8px_16px_rgba(79,135,197,0.28)]">
+                <PhoneCall className="h-4 w-4" />
+              </span>
+              <span>
+                <span className="block text-xs font-bold uppercase tracking-[0.1em] text-[#7f92aa]">
+                  {isEnglish ? "Call" : "Telefon"}
+                </span>
+                <span className="block text-sm font-bold text-[#5f738b]">+603-89920700</span>
+              </span>
+            </a>
+
+            <a
+              href="https://wa.me/60129795600"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-3 rounded-2xl border border-white/80 bg-[#edf2f8] px-4 py-3 text-[#60748d] shadow-[-6px_-6px_14px_rgba(255,255,255,0.84),6px_6px_14px_rgba(129,144,165,0.2)] transition-all hover:-translate-y-0.5 hover:text-[#4f87c5]"
+              aria-label="Open WhatsApp chat with customer support at +6012-9795600"
+            >
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[linear-gradient(135deg,#66c98c,#28b463)] text-white shadow-[0_8px_16px_rgba(40,180,99,0.25)]">
+                <MessageCircle className="h-4 w-4" />
+              </span>
+              <span>
+                <span className="block text-xs font-bold uppercase tracking-[0.1em] text-[#7f92aa]">
+                  WhatsApp
+                </span>
+                <span className="block text-sm font-bold text-[#5f738b]">+6012-9795600</span>
+              </span>
+            </a>
+          </div>
+        </div>
+
         <p>&copy; {new Date().getFullYear()} S4S. {isEnglish ? "All rights reserved." : "Hak cipta terpelihara."}</p>
         <p className="mt-2 flex items-center justify-center gap-1">
           {isEnglish ? "Linked to" : "Dihubungkan dengan"}{" "}
